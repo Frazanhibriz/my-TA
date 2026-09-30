@@ -1,0 +1,19 @@
+# Data & analisis
+pandas==2.3.3
+numpy==2.2.6
+scipy==1.15.3
+scikit-learn==1.7.2
+pyarrow==25.0.1
+
+# Visualisasi
+matplotlib==3.10.9
+seaborn==0.13.2
+wordcloud==1.9.6
+
+# NLP
+vaderSentiment==3.3.2
+transformers==5.17.0
+# torch: pasang sesuai GPU/CUDA di mesin training (lihat pytorch.org), tidak di-pin di sini
+
+# Notebook
+ipykernel==7.3.0

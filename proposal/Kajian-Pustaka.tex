@@ -1,0 +1,231 @@
+\chapter{Kajian Pustaka}
+
+\section{Konsep dan Karakteristik Sarkasme dalam Teks}
+
+Sarkasme merupakan salah satu bentuk bahasa figuratif yang cukup unik karena makna harfiahnya sering kali berlawanan dengan maksud yang ingin disampaikan. Dalam komunikasi sehari-hari, sarkasme lazim digunakan sebagai cara tidak langsung untuk menyampaikan kritik, ejekan, atau ketidakpuasan, sehingga pesan yang disampaikan menjadi tidak mudah ditangkap secara langsung. Sifat ambigu inilah yang kemudian menjadikan sarkasme sebagai salah satu fenomena paling menantang dalam pemrosesan bahasa alami (NLP), terutama dalam konteks analisis sentimen.
+
+Dalam teks tertulis, sarkasme dapat dikenali melalui beberapa ciri yang membedakannya dari bentuk komunikasi lain. Ciri yang paling mendasar adalah adanya pertentangan makna atau inkonsistensi pragmatis. Penutur secara sengaja menyimpang dari komunikasi normal yang berlaku, misalnya dengan memilih diksi positif untuk menyampaikan maksud yang justru negatif. Di platform media sosial, bahasa sarkasme juga kerap hadir dalam bentuk tidak baku, mulai dari penggunaan slang, singkatan, hingga ekspresi. Selain itu, penanda visual seperti tanda baca berlebihan, huruf kapital, dan pengulangan huruf tertentu sering muncul sebagai upaya penutur mempertegas emosi yang ingin disampaikan. Emoji pun tidak jarang dimanfaatkan sebagai petunjuk tambahan untuk menandai nada sarkastis, meski sifatnya yang polisemi justru kerap menimbulkan ambiguitas \cite{grover2026emoji}.
+
+Dibandingkan tugas klasifikasi teks pada umumnya, deteksi sarkasme jelas jauh lebih kompleks. Pendekatan analisis sentimen yang konvensional umumnya mengandalkan kata-kata bermuatan emosional untuk menentukan polaritas suatu teks. Pendekatan tersebut menjadi kurang efektif ketika diterapkan pada teks sarkastis, sebab makna yang sesungguhnya sering kali tidak tercermin dari permukaan teks. Mendeteksi sarkasme membutuhkan pemahaman konteks yang lebih luas, mencakup hubungan antar kalimat, konteks percakapan sebelumnya, hingga informasi eksternal yang relevan.
+
+Dalam perspektif komputasi, tantangan yang dihadapi bahkan jauh lebih berlapis. Tidak tersedianya sinyal non-verbal seperti nada suara dan ekspresi wajah menjadi kendala yang cukup fundamental, mengingat dalam komunikasi tatap muka kedua elemen tersebut berperan besar dalam mengidentifikasi sarkasme. Di luar itu, menafsirkan sarkasme memang memerlukan kepekaan terhadap nuansa makna yang tidak selalu mudah ditangkap, bahkan oleh manusia sekalipun. Tantangan tersebut semakin besar karena data media sosial umumnya tidak terstruktur, penuh derau, dan mengalami ketidakseimbangan kelas antara sampel sarkastis dan non-sarkastis \cite{dubey2025unpacking}. Tidak hanya itu, sarkasme sering kali hadir bersama konten multimodal seperti gambar, video, atau emoji, sementara banyak pendekatan yang ada masih terbatas pada analisis teks saja \cite{dhumpati2025sarcasm}. Di sisi lain, model-model canggih yang dirancang untuk menangkap relasi kontekstual secara mendalam, seperti model berbasis transformer dan jaringan saraf dua arah, umumnya memerlukan kapasitas komputasi yang besar, yang menjadi hambatan nyata dalam penerapannya di dunia nyata.
+
+Berdasarkan berbagai karakteristik dan tantangan tersebut, deteksi sarkasme pada dasarnya merupakan permasalahan yang tidak bisa diselesaikan dengan pendekatan konvensional yang sederhana. Dibutuhkan model yang mampu menangkap ketergantungan kontekstual secara mendalam, namun tetap mempertimbangkan efisiensi komputasi agar layak dan optimal diterapkan dalam konteks praktis atau \textit{real-time} \cite{dubey2025unpacking}.
+
+\section{Pendekatan dalam Deteksi Sarkasme}
+
+Metode deteksi sarkasme telah berkembang secara signifikan seiring dengan meningkatnya kompleksitas data tekstual di media sosial dan kebutuhan yang semakin besar bagi model untuk memahami informasi kontekstual secara lebih efektif. Metode-metode ini berkisar dari pendekatan berbasis aturan yang sederhana hingga arsitektur berbasis transformer yang canggih yang dapat menangkap hubungan semantik dalam konteks. Setiap pendekatan memiliki karakteristik, kekuatan, dan kelemahan yang berbeda dalam menangani tugas deteksi sarkasme, khususnya terkait \textit{trade-off} antara akurasi analitis dan efisiensi sumber daya komputasi.
+
+\subsection{Pendekatan Berbasis (\textit{rule-based}) dan \textit{Machine Learning}}
+
+Pendekatan awal untuk deteksi sarkasme sebagian besar didasarkan pada pendekatan berbasis aturan dan statistik yang sangat bergantung pada fitur-fitur yang dirancang secara manual. Metode-metode ini melibatkan penggunaan kamus leksikal, TF-IDF, n-gram, dan penandaan Part-of-Speech (POS) untuk mengidentifikasi pola linguistik dalam data tekstual. Selain itu, beberapa penelitian telah menggunakan metode deteksi kontradiksi dan ketidakkonsistenan sentimen untuk menemukan konflik antara ekspresi positif dan situasi kontekstual negatif dalam sebuah kalimat.
+
+Pendekatan berbasis (\textit{rule-based}) cukup efektif untuk mengenali pola sarkasme yang eksplisit, namun performanya terbatas karena aturan-aturan tersebut dirancang secara manual dan bersifat kaku. Terlebih lagi, teknik-teknik ini gagal beradaptasi dengan variasi bahasa yang dinamis dan untuk memahami makna kontekstual implisit, yang biasanya merupakan inti dari ekspresi sarkastis. Keterbatasan ini menyebabkan meluasnya penggunaan algoritma pembelajaran mesin tradisional dalam tugas-tugas deteksi sarkasme. Beberapa algoritma yang paling populer adalah Support Vector Machine (SVM), Naive Bayes, K-Nearest Neighbors (KNN), Regresi Logistik, dan algoritma berbasis ensemble seperti Random Forest, XGBoost, dan AdaBoost. Model-model ini digunakan untuk tugas klasifikasi berdasarkan fitur-fitur linguistik yang telah diekstraksi sebelumnya.
+
+Pendekatan berbasis aturan cukup efektif untuk mengenali pola sarkasme yang eksplisit, namun performanya terbatas karena aturan-aturan tersebut dirancang secara manual dan bersifat kaku. Selain itu, pendekatan ini memerlukan proses perancangan, pemeliharaan, dan pembaruan aturan secara terus-menerus agar dapat mengikuti perkembangan variasi bahasa yang dinamis. Keterbatasan tersebut menyebabkan pendekatan berbasis aturan kurang mampu menangkap makna kontekstual dan hubungan semantik implisit yang sering menjadi karakteristik utama ekspresi sarkastis. Untuk mengatasi keterbatasan tersebut, berbagai penelitian mulai beralih ke pendekatan machine learning yang mampu mempelajari pola bahasa secara otomatis dari data. Namun, model pembelajaran mesin tradisional masih menghadapi tantangan dalam memodelkan ketergantungan kontekstual dan ambiguitas semantik karena representasi teks yang digunakan umumnya belum mampu menangkap hubungan kontekstual secara mendalam \cite{dubey2025unpacking}.
+
+\subsection{Pendekatan Berbasis \textit{deep learning}}
+
+Perkembangan \textit{deep learning} membantu deteksi sarkasme. Hal ini memungkinkan model mempelajari representasi fitur otomatis dan mengurangi kebutuhan rekayasa fitur manual. Salah satu arsitektur yang banyak digunakan adalah \textit{Convolutional Neural Network} (CNN), yang efektif dalam menangkap pola lokal dan hubungan spasial antar kata dalam sebuah kalimat.
+
+Selain CNN, arsitektur berbasis \textit{Recurrent Neural Network} (RNN) seperti \textit{Long Short-Term Memory} (LSTM) dan \textit{Gated Recurrent Unit} (GRU) juga banyak digunakan untuk deteksi sarkasme. Model-model ini dirancang untuk menangani data sekuensial dan mengingat konteks dari waktu yang lama. Inovasi lebih lanjut menghasilkan versi dua arah seperti \textit{Bidirectional LSTM} (BiLSTM) dan \textit{Bidirectional GRU} (BiGRU), yang memungkinkan model untuk menangkap informasi kontekstual dari urutan sebelumnya dan sesudahnya secara bersamaan.
+
+Selain itu, terdapat beberapa penelitian yang mengusulkan arsitektur \textit{hybrid} yang menggabungkan model CNN dan LSTM untuk menangkap fitur spasial dan temporal secara bersama-sama \cite{prakash2025sarcasm}. Sebagai tambahan, arsitektur \textit{deep learning} telah dilengkapi dengan mekanisme atensi untuk mengidentifikasi kata-kata yang merupakan indikator kuat sarkasme dengan lebih baik. Teknik seperti Attention Mechanism-Based Bidirectional LSTM-GRU (AM-BLSTM-GRU) telah melampaui metode \textit{deep learning} tradisional dalam hal pengetahuan kontekstual \cite{dhumpati2025sarcasm}.
+
+Model \textit{deep learning} telah membuat kemajuan dalam pemahaman semantik dan kontekstual, namun mereka masih memiliki keterbatasan dalam menangani hubungan kontekstual yang sangat kompleks dan dependensi jangka panjang. Selain itu, persyaratan komputasi yang tinggi tetap menjadi tantangan untuk penggunaan praktis \cite{dhumpati2025sarcasm}.
+
+\subsection{Pendekatan Berbasis Transformer}
+
+Perkembangan terbaru dalam deteksi sarkasme didominasi oleh pendekatan transfer learning dan arsitektur berbasis transformer. Berbeda dengan arsitektur rekuren tradisional, transformer memproses semua hubungan antar kata secara paralel di seluruh kalimat, melalui mekanisme \textit{self-attention}. Mekanisme ini memungkinkan model untuk menghasilkan \textit{contextual embedding}, di mana makna suatu kata berubah sesuai dengan konteksnya.
+
+Arsitektur berbasis \textit{transformer} seperti BERT, RoBERTa, dan DistilBERT telah menunjukkan performa superior dalam deteksi sarkasme karena kemampuannya menangkap informasi kontekstual dua arah. Secara spesifik, RoBERTa yang dikembangkan dengan proses pelatihan mendalam mampu menghasilkan akurasi klasifikasi yang tinggi, namun menuntut sumber daya komputasi yang signifikan, seperti konsumsi memori GPU yang besar dan waktu pelatihan yang lama. Sebagai alternatif, DistilBERT yang dirancang melalui proses \textit{knowledge distillation} menawarkan arsitektur yang lebih ringan dan waktu inferensi yang jauh lebih cepat. Meskipun terdapat sedikit penurunan performa prediksinya dibandingkan RoBERTa, efisiensi DistilBERT menjadikannya solusi yang lebih layak untuk penerapan sistem dengan sumber daya terbatas dan kebutuhan \textit{real-time} \cite{dubey2025unpacking}.
+
+Perbedaan karakteristik antara RoBERTa dan DistilBERT menunjukan adanya \textit{trade-off} antara akurasi dan efisiensi komputasi. Oleh karena itu, kedua model tersebut menjadi fokus utama dalam penelitian ini untuk menganalisis keseimbangan antara performa klasifikasi dan kebutuhan komputasi dalam deteksi sarkasme berbasis teks.
+
+\subsection{Pendekatan Unimodal dan Multimodal}
+
+Selain pendekatan berbasis teks (\textit{unimodal}), beberapa penelitian terbaru mulai mengembangkan pendekatan \textit{multimodal} menggunakan informasi tambahan seperti audio, gambar, dan emoji untuk menangkap konteks non-verbal. Meskipun pendekatan multimodal dapat memperkaya pemahaman kontekstual, integrasi berbagai tipe data ini secara substansial membuat sistem menjadi jauh lebih kompleks dan menuntut sumber daya komputasi yang besar \cite{dhumpati2025sarcasm}. Oleh karena itu, penelitian ini membatasi ruang lingkup pada pendekatan \textit{unimodal} berbasis teks. Pembatasan ini dilakukan agar analisis dapat terfokus secara mendalam pada evaluasi \textit{trade-off} antara akurasi pemahaman konteks dan efisiensi komputasi pada arsitektur transformer, khususnya model DistilBERT dan RoBERTa.
+
+Meskipun pendekatan multimodal dapat meningkatkan pemahaman kontekstual, pendekatan tersebut juga secara substansial membuat sistem menjadi lebih kompleks dan membutuhkan sumber daya komputasi yang lebih besar \cite{dhumpati2025sarcasm}. Oleh karena itu, penelitian ini berfokus pada pendekatan \textit{unimodal} berbasis teks agar analisis dapat difokuskan pada evaluasi \textit{trade-off} antara akurasi dan efisiensi komputasi pada arsitektur transformer, khususnya DistilBERT dan RoBERTa. 
+
+\section{Metrik Evaluasi Kinerja Model}
+\subsection{Confusion Matrix}
+
+Dalam penelitian klasifikasi teks, khususnya pada deteksi sarkasme, confusion matrix sering digunakan untuk evaluasi kinerja model. \textit{Confusion matrix} merupakan matriks evaluasi yang digunakan untuk membandingkan hasil prediksi model dengan label aktual dari data yang diamati. Matriks ini memungkinkan analisis yang lebih rinci mengenai kinerja model dengan melihat jumlah prediksi yang benar dan salah untuk setiap kelas.
+
+\textit{Confusion matrix} memiliki empat komponen utama, yaitu \textit{True Positive} (TP), \textit{True Negative} (TN), \textit{False Positive} (FP), \textit{False Negative} (FN). \textit{True Positive} menunjukan jumlah teks sarkastis yang berhasil diklasifikasikan benar sebagai teks sarkasme oleh model. Sebaliknya, \textit{True Negative} menunjukan jumlah teks non-sarkastis yang berhasil diklasifikasikan benar sebagai teks non-sarkastis oleh model. Sementara itu, \textit{False Positive} adalah ketika model salah mengklasifikasikan teks non-sarkastis sebagai sarkastis, dan \textit{False Negative} adalah ketika teks sarkastis tidak terdeteksi dan diklasifikasikan sebagai teks normal.
+
+Dalam konteks deteksi sarkasme, analisis mendetail terhadap nilai TP, TN, FP, dan FN sangat penting karena klasifikasi sering kali terkecoh oleh makna sarkasme yang implisit dan ambigu.
+
+\subsection{Accuracy}
+Accuracy atau akurasi merupakan metrik evaluasi yang mengukur proporsi prediksi yang diklasifikasikan dengan benar dari total jumlah data yang diuji. Metrik ini memberikan gambaran umum mengenai kemampuan model dalam melakukan klasifikasi secara keseluruhan.
+
+Rumus accuracy dapat dinyatakan sebagai berikut:
+
+\begin{equation}
+\text{Accuracy} = \frac{\text{TP} + \text{TN}}{\text{TP} + \text{TN} + \text{FP} + \text{FN}}
+\end{equation}
+
+Semakin tinggi nilai accuracy, semakin banyak data yang diklasifikasikan dengan benar oleh model. Namun, accuracy memiliki keterbatasan ketika berhadapan dengan kumpulan data yang tidak seimbang. Dalam deteksi sarkasme, jumlah data non-sarkastis sering kali lebih banyak daripada teks sarkastis dalam kumpulan data \cite{dhumpati2025sarcasm}. Dengan demikian, sebuah model dapat mencapai akurasi tinggi hanya dengan memprediksi sebagian besar data sebagai kelas mayoritas tanpa benar-benar mempelajari karakteristik ekspresi sarkastis.
+
+\subsection{Precision}
+Precision digunakan untuk mengukur seberapa akurat prediksi positif yang dihasilkan oleh model. Dalam konteks deteksi sarkasme, precision menunjukan seberapa banyak teks sarkastis diprediksi benar sebagai sarkastis.
+
+Rumus precision ditunjukkan sebagai berikut:
+
+\begin{equation}
+\text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}
+\end{equation}
+
+Nilai precision yang tinggi menunjukkan bahwa model dapat mengurangi \textit{false positive}. Ini penting untuk menghindari salah klasifikasi teks non-sarkastis sebagai sarkastis dalam konteks deteksi sarkasme. Dengan demikian, precision merupakan salah satu indikator penting untuk mengevaluasi ketepatan model dalam memprediksi sarkasme.
+
+
+\subsection{Recall}
+Recall merupakan metrik evaluasi yang digunakan untuk mengukur kemampuan model dalam mengidentifikasi semua data positif yang tersedia. Dalam penelitian deteksi sarkasme, recall menunjukan kemampuan model untuk mengidentifikasi teks sarkastis di antara semua teks yang sebenarnya sarkastis. 
+
+Rumus recall ditunjukkan sebagai berikut:
+
+\begin{equation}
+\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}
+\end{equation}
+
+Semakin tinggi nilai recall, semakin sedikit false negatives yang dihasilkan oleh model. Recall menjadi indikator penting dalam deteksi sarkasme karena banyak ekspresi sarkastis yang disampaikan secara implisit dan sulit diidentifikasi. Oleh karena itu, model dengan recall yang baik diharapkan dapat menangkap lebih banyak pola sarkasme tersembunyi dalam teks.
+
+\subsection{F1-Score}
+F1-score adalah rata-rata harmonik dari precision dan recall. Metrik ini digunakan untuk memberikan evaluasi kinerja model yang lebih seimbang, terutama dalam kasus di mana dataset memiliki distribusi kelas yang tidak seimbang.
+
+Rumus F1-Score ditunjukkan sebagai berikut:
+
+\begin{equation}
+\text{F1-Score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
+\end{equation}
+
+F1-score hanya akan menghasilkan nilai yang tinggi apabila \textit{precision} dan \textit{recall} berada dalam kondisi seimbang. Mengingat kompleksitas deteksi sarkasme sering kali melibatkan tarik-ulur (\textit{trade-off}) antara mempertahankan presisi dan kepekaan menangkap konteks tersembunyi, \textit{F1-score} dioptimalkan sebagai metrik evaluasi utama. Metrik ini memberikan penilaian yang jauh lebih komprehensif dan adil dibandingkan \textit{accuracy}, khususnya dalam menangani dataset sarkasme di dunia nyata yang secara alami tidak seimbang \cite{dubey2025unpacking}.
+
+\subsection{Computational Efficiency Metrics}
+Selain mengevaluasi performa klasifikasi, efisiensi komputasi model juga dipelajari dalam penelitian ini di samping kinerja klasifikasi. Efisiensi komputasi merupakan pertimbangan penting karena arsitektur berbasis transformer biasanya memiliki jumlah parameter yang besar dan struktur arsitektur yang kompleks, sehingga membutuhkan biaya komputasi yang tinggi.
+
+Beberapa metrik efisiensi komputasi seperti waktu pelatihan, waktu inferensi, penggunaan memori, dan ukuran parameter digunakan dalam penelitian ini. Waktu pelatihan mengacu pada waktu yang dibutuhkan model untuk melakukan proses pelatihan, dan waktu inferensi mengacu pada latensi untuk membuat prediksi pada data yang tidak terlihat. Penggunaan memori di sini mengacu pada jumlah memori komputasi yang digunakan selama eksekusi. Ukuran parameter mengacu pada kompleksitas dan ukuran arsitektur model.
+
+Evaluasi terhadap efisiensi komputasi menjadi penting dalam penerapan model pada dunia nyata (\textit{real-world environment}), terutama dalam sistem dengan keterbatasan sumber daya. Dalam penelitian ini, RoBERTa diperkirakan mampu mencapai kinerja klasifikasi yang lebih baik karena memiliki kapasitas pemahaman konteks yang lebih besar. Namun, peningkatan ini membutuhkan sumber daya komputasi yang lebih besar. Sementara itu, DistilBERT dirancang untuk menjadi model yang ringan dan efisien dengan lebih sedikit parameter yang dapat memungkinkan inferensi lebih cepat dan penggunaan memori yang lebih rendah, meskipun terdapat kemungkinan penurunan performa klasifikasi dibandingkan dengan RoBERTa \cite{dubey2025unpacking}.
+
+Berdasarkan karakteristik tersebut, studi ini dilakukan untuk menganalisis trade-off antara akurasi dan efisiensi komputasi deteksi sarkasme berbasis transformer, khususnya menggunakan DistilBERT dan RoBERTa.
+
+
+\section{Penelitian Terdahulu}
+
+Penelitian mengenai deteksi sarkasme telah mendapat perhatian yang cukup besar dalam beberapa tahun terakhir, khususnya seiring meningkatnya penggunaan model berbasis transformer. Sejumlah penelitian sebelumnya telah mengeksplorasi berbagai pendekatan, mulai dari peningkatan performa klasifikasi, pemanfaatan konteks percakapan, hingga efisiensi komputasi model. Ringkasan penelitian-penelitian tersebut yang relevan dengan topik ini disajikan pada Tabel \ref{tab:penelitian_terdahulu}.
+
+
+\begin{table}[H]
+\centering
+\caption{Perbandingan Penelitian Terdahulu}
+\label{tab:penelitian_terdahulu}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|p{2.8cm}|p{2.5cm}|p{2.5cm}|p{3cm}|p{3.2cm}|p{3cm}|p{3cm}|}
+\hline
+\textbf{Peneliti} &
+\textbf{Dataset} &
+\textbf{Model} &
+\textbf{Fokus Penelitian} &
+\textbf{Hasil Utama} &
+\textbf{Keterbatasan} &
+\textbf{Research Gap} \\
+\hline
+
+Jiménez et al. (2026)
+&
+iSarcasmEval, Sarcasm Corpus V2
+&
+BERT, RoBERTa, ALBERT, DistilBERT, DeBERTa
+&
+Perbandingan performa beberapa model berbasis BERT untuk deteksi sarkasme.
+&
+DeBERTa menunjukkan performa paling baik pada dataset yang digunakan, sementara DistilBERT menunjukkan keunggulan dari sisi efisiensi waktu.
+&
+Tidak menggunakan dataset SARC dan pembahasan efisiensi komputasi masih terbatas pada aspek tertentu.
+&
+Masih diperlukan kajian trade-off performa dan efisiensi komputasi pada data percakapan Reddit yang lebih kontekstual.
+\\
+\hline
+
+Ullah et al. (2026)
+&
+News Headlines dan The Onion
+&
+RoBERTa, DistilBERT, ALBERT, Soft Voting Ensemble
+&
+Deteksi sarkasme pada variasi bahasa formal dan informal serta interpretabilitas model menggunakan \textit{LIME}.
+&
+Pendekatan ensemble menunjukkan performa yang baik, sedangkan DistilBERT tetap kompetitif sebagai model yang lebih ringan.
+&
+Tidak menggunakan dataset percakapan kontekstual seperti SARC dan belum berfokus pada analisis efisiensi komputasi secara mendalam.
+&
+Masih diperlukan evaluasi model pada data percakapan media sosial yang lebih kontekstual dengan mempertimbangkan performa dan efisiensi komputasi.
+\\
+\hline
+
+Ataei et al. (2020)
+&
+Twitter dan SARC
+&
+NBSVM, BERT, XLNet, Bi-GRU-CNN, LCF-BERT
+&
+Integrasi \textit{Aspect-Based Sentiment Analysis} (ABSA) dan model Transformer untuk deteksi sarkasme.
+&
+Model berbasis transformer menunjukkan performa yang lebih baik dibandingkan beberapa pendekatan tradisional.
+&
+Fokus utama penelitian berada pada peningkatan performa klasifikasi dan belum mengevaluasi efisiensi komputasi secara khusus.
+&
+Masih diperlukan evaluasi yang mempertimbangkan kebutuhan sumber daya komputasi dan kelayakan implementasi model pada kondisi praktis.
+\\
+\hline
+
+Dubey et al. (2026)
+&
+News Headlines, Mustard, dan SARC
+&
+RoBERTa, DistilBERT dengan \textit{BART Context Summarization}
+&
+Analisis performa dan efisiensi arsitektur Transformer untuk deteksi sarkasme.
+&
+RoBERTa menunjukkan performa klasifikasi yang tinggi, sedangkan DistilBERT menunjukkan efisiensi komputasi yang lebih baik.
+&
+Menggunakan komponen tambahan seperti \textit{BART} dan metadata sehingga evaluasi efisiensi belum sepenuhnya merepresentasikan perbandingan langsung arsitektur model.
+&
+Masih diperlukan evaluasi trade-off yang lebih terisolasi antara RoBERTa dan DistilBERT tanpa komponen tambahan.
+\\
+\hline
+
+Zhang et al. (2025)
+&
+SARC
+&
+BERT Multi-Head Attention, GPT-3, Claude-2, Llama-2
+&
+Optimalisasi Transformer menggunakan \textit{Multi-Head Attention} untuk meningkatkan sensitivitas konteks.
+&
+Model BERT dengan \textit{Multi-Head Attention} menunjukkan performa yang kompetitif pada dataset SARC dan mampu mengungguli beberapa model LLM.
+&
+Penelitian lebih berfokus pada peningkatan performa klasifikasi dan belum membahas alternatif model ringan secara mendalam.
+&
+Masih diperlukan kajian mengenai keseimbangan antara peningkatan performa dan efisiensi komputasi pada model Transformer yang lebih ringan.
+\\
+\hline
+
+\end{tabular}
+}
+\end{table}
+
+
+Berdasarkan Tabel \ref{tab:penelitian_terdahulu}, Sebagian besar penelitian yang ada cenderung berfokus pada pemanfaatan arsitektur berbasis transformer untuk meningkatkan performa deteksi sarkasme. Model-model seperti BERT, RoBERTa, DeBERTa, dan berbagai variannya terbukti mampu menangkap konteks secara lebih baik sehingga menghasilkan akurasi klasifikasi yang cukup tinggi. Tak sedikit pula penelitian yang mencoba mengombinasikan pendekatan tersebut dengan attention mechanism, ensemble learning, maupun penggabungan informasi kontekstual guna memperkuat kemampuan deteksi.
+
+Namun demikian, fokus utama pada sebagian besar penelitian tersebut masih berkutat pada pencapaian performa klasifikasi semata. Aspek efisiensi komputasi seperti waktu pelatihan, latensi inferensi, konsumsi memori GPU, serta ukuran model justru jarang dibahas secara mendalam. Beberapa penelitian yang sudah menyinggung efisiensi komputasi pun umumnya melibatkan komponen tambahan seperti context summarization atau fitur eksternal, sehingga gambaran mengenai trade-off antara performa dan efisiensi pada arsitektur transformer itu sendiri masih belum terlalu jelas.
+
+\section{Research Gap dan Posisi Penelitian}
+
+Penelitian sebelumnya telah membandingkan RoBERTa dan DistilBERT untuk deteksi sarkasme, termasuk pada dataset SARC. Hasil penelitian menunjukkan bahwa RoBERTa cenderung memiliki performa klasifikasi yang lebih tinggi, sedangkan DistilBERT lebih efisien dari sisi komputasi. Namun, beberapa penelitian juga menggunakan komponen tambahan seperti context summarization dan metadata, sehingga hasil yang diperoleh tidak hanya dipengaruhi oleh kedua model tersebut.
+
+Penelitian ini melakukan perbandingan RoBERTa dan DistilBERT pada kondisi eksperimen yang lebih terkontrol menggunakan input parent comment dan target comment tanpa context summarization maupun metadata tambahan. Evaluasi dilakukan berdasarkan performa klasifikasi serta kebutuhan komputasi dari masing-masing model.
+
+Penelitian ini tidak bertujuan menentukan satu model yang terbaik secara mutlak, tetapi melihat seberapa besar performa yang diperoleh dibandingkan dengan sumber daya komputasi yang dibutuhkan. Hasilnya diharapkan dapat memberikan gambaran kapan RoBERTa lebih sesuai digunakan dan kapan DistilBERT menjadi pilihan yang lebih efisien.

@@ -1,0 +1,192 @@
+\chapter{Pendahuluan}
+
+\section{Latar Belakang}
+
+Di era digital saat ini, media sosial dan forum diskusi daring telah menjadi sarana komunikasi berbasis teks utama yang digunakan masyarakat untuk menyampaikan opini, berbagi informasi, dan berinteraksi satu sama lain di seluruh dunia. Reddit dan platform serupa lainnya menghasilkan jutaan komentar per hari tentang berbagai topik seperti hiburan, politik, teknologi, isu sosial, dan lain-lain. Besarnya volume komunikasi daring ini telah membuka jalur baru untuk penelitian di bidang Pemrosesan Bahasa Alami (NLP), terutama pada analisis opini dan pemahaman bahasa alami. Namun, beragamnya gaya bahasa pengguna di media sosial juga menghadirkan tantangan linguistik yang cukup kompleks, terutama karena komunikasi daring sering kali mengandung bahasa informal, singkatan, ironi, serta penggunaan makna implisit yang sulit dipahami secara langsung oleh sistem komputasi.
+
+Salah satu jenis bahasa figuratif yang paling umum dalam komunikasi daring adalah sarkasme, yang biasanya beroperasi melalui makna implisit dan kontradiktif. Orang sering menggunakan ekspresi positif atau netral dengan cara yang sarkastis untuk menyampaikan niat negatif, kritik, cemoohan, atau ketidakpuasan. Namun, berbeda dengan bahasa literal, makna yang dimaksud dari sarkasme seringkali berbeda dari makna permukaan kalimat dan oleh karena itu sangat bergantung pada interpretasi kontekstual. Pada media sosial, sarkasme sering kali bergantung pada konteks percakapan, nada komunikasi, dan interaksi sebelumnya antar pengguna. Dengan demikian, sarkasme tidak dapat disimpulkan dengan benar hanya dengan menganalisis kalimat-kalimat individual, terutama di platform diskusi seperti Reddit yang menggunakan struktur percakapan parent-child dengan ketergantungan kontekstual yang panjang \cite{dubey2025unpacking}.
+
+Deteksi sarkasme otomatis merupakan salah satu tantangan utama dalam analisis sentimen dan Pemrosesan Bahasa Alami (NLP) modern. Sarkasme dapat sepenuhnya mengubah sentimen sebenarnya dari suatu kalimat. Model komputasi dapat menghasilkan interpretasi yang salah ketika makna kontekstual tidak dipahami dengan benar. Akibatnya, kegagalan dalam mendeteksi sarkasme dapat menurunkan keandalan berbagai aplikasi seperti opinion mining, analisis umpan balik pelanggan, serta sistem pemantauan media sosial. Selain itu, sifat teks media sosial yang informal dan penuh dengan noise, seperti penggunaan bahasa gaul, singkatan, inkonsistensi tata bahasa, dan ekspresi ambigu, membuat tugas deteksi sarkasme menjadi lebih kompleks. Hal tersebut menunjukkan bahwa deteksi sarkasme memerlukan pendekatan pemahaman bahasa yang mampu menangkap hubungan kontekstual dan informasi semantik implisit dengan lebih baik daripada metode klasifikasi teks konvensional.
+
+Penelitian mengenai deteksi sarkasme telah beralih dari pendekatan berbasis aturan (\textit{rule-based}) dan \textit{traditional machine learning} menuju arsitektur \textit{deep learning} dan berbasis transformer untuk mengatasi keterbatasan pendekatan tradisional. Pendekatan awal sebagian besar bergantung pada pola leksikal, aturan sintaksis, atau fitur yang direkayasa secara manual (\textit{hand-crafted features}). Namun, metode-metode tersebut umumnya tidak berhasil menangkap makna berbasis konteks dan hubungan semantik implisit dari ekspresi sarkastis. Selanjutnya, model pembelajaran mendalam seperti CNN, RNN, dan LSTM diperkenalkan untuk meningkatkan pemahaman kontekstual dengan memanfaatkan mekanisme pembelajaran sekuensial. Namun, perkembangan terkini model berbasis transformer telah merevolusi bidang Pemrosesan Bahasa Alami (NLP) secara signifikan berkat kemampuannya untuk mempelajari representasi kontekstual secara lebih efektif melalui mekanisme \textit{self-attention} \cite{zhang2025enhancing}. Arsitektur berbasis transformer mampu menangkap hubungan semantik antar kata dalam satu kalimat secara keseluruhan, sehingga model mampu memahami sarkasme implisit dan ironi kontekstual dengan lebih baik dalam percakapan media sosial yang tidak terstruktur.
+
+RoBERTa dan DistilBERT merupakan dua model berbasis transformer yang memiliki karakteristik berbeda dalam tugas deteksi sarkasme. RoBERTa dikenal memiliki kemampuan representasi kontekstual yang kuat dan mampu menghasilkan performa klasifikasi yang tinggi. Namun, kemampuan tersebut juga membutuhkan sumber daya komputasi yang relatif lebih besar, seperti penggunaan memori GPU, waktu pelatihan, dan waktu inferensi. Di sisi lain, DistilBERT dikembangkan menggunakan pendekatan *knowledge distillation* untuk menghasilkan model transformer yang lebih ringan dengan tetap mempertahankan kemampuan pemahaman konteks yang kompetitif. Karakteristik tersebut membuat DistilBERT memiliki kebutuhan komputasi yang lebih rendah dan proses inferensi yang lebih cepat \cite{dubey2025unpacking}. Perbedaan ini menunjukkan bahwa pemilihan model tidak selalu dapat ditentukan hanya berdasarkan performa klasifikasi tertinggi, tetapi juga perlu mempertimbangkan kebutuhan komputasi dan kondisi penggunaan model.
+
+Penelitian sebelumnya telah membandingkan RoBERTa dan DistilBERT dari sisi performa klasifikasi maupun efisiensi komputasi. Namun, beberapa penelitian masih menggunakan komponen tambahan seperti *context summarization* dan integrasi metadata dalam proses deteksi sarkasme, sehingga hasil yang diperoleh tidak hanya dipengaruhi oleh karakteristik dari kedua model transformer tersebut. Oleh karena itu, penelitian ini melakukan perbandingan RoBERTa dan DistilBERT pada dataset Self-Annotated Reddit Corpus (SARC) dalam skenario eksperimen yang lebih terkontrol. Analisis yang dilakukan tidak hanya bertujuan untuk melihat model mana yang menghasilkan performa lebih tinggi atau membutuhkan sumber daya lebih sedikit, tetapi juga untuk melihat seberapa besar perubahan performa yang terjadi dibandingkan dengan keuntungan efisiensi komputasi yang diperoleh. Dengan demikian, hasil penelitian diharapkan dapat memberikan gambaran mengenai kondisi penggunaan di mana RoBERTa maupun DistilBERT lebih sesuai berdasarkan kebutuhan performa dan sumber daya komputasi.
+
+
+\section{Perumusan Masalah}
+
+Berdasarkan latar belakang yang telah dijelaskan sebelumnya, penelitian ini berfokus pada analisis \textit{trade-off} antara performa klasifikasi dan efisiensi komputasi dari model RoBERTa dan DistilBERT untuk tugas deteksi sarkasme. Oleh karena itu, rumusan masalah dalam penelitian ini adalah sebagai berikut:
+
+\begin{enumerate}
+    \item Bagaimana perbandingan performa klasifikasi RoBERTa dan DistilBERT dalam mendeteksi sarkasme menggunakan dataset \textit{Self-Annotated Reddit Corpus} (SARC)?
+    
+    \item Bagaimana perbedaan efisiensi komputasi RoBERTa dan DistilBERT dilihat dari \textit{training time}, \textit{inference latency}, penggunaan memori GPU, dan jumlah parameter model?
+    
+    \item Bagaimana \textit{trade-off} antara performa klasifikasi dan efisiensi komputasi dari kedua model, serta pada kondisi seperti apa RoBERTa atau DistilBERT lebih sesuai untuk digunakan?
+\end{enumerate}
+
+\section{Tujuan}
+
+Penelitian ini bertujuan untuk menganalisis \textit{trade-off} antara performa klasifikasi dan efisiensi komputasi pada model RoBERTa dan DistilBERT untuk tugas deteksi sarkasme menggunakan dataset \textit{Self-Annotated Reddit Corpus} (SARC). Untuk mencapai tujuan tersebut, penelitian ini memiliki beberapa sasaran sebagai berikut:
+
+\begin{enumerate}
+    \item Membandingkan performa klasifikasi RoBERTa dan DistilBERT dalam mendeteksi sarkasme pada dataset \textit{Self-Annotated Reddit Corpus} (SARC).
+    
+    \item Membandingkan efisiensi komputasi RoBERTa dan DistilBERT dalam proses pelatihan dan inferensi.
+    
+    \item Menganalisis \textit{trade-off} antara performa klasifikasi dan efisiensi komputasi untuk melihat kondisi penggunaan yang lebih sesuai bagi masing-masing model.
+\end{enumerate}
+
+\section{Batasan Masalah}
+
+Penelitian ini memiliki beberapa batasan agar pembahasan tetap terfokus pada ruang lingkup yang telah ditentukan, yaitu:
+
+\begin{enumerate}
+    \item Penelitian hanya membahas deteksi sarkasme berbasis teks tanpa menggunakan informasi multimodal seperti gambar, audio, maupun video.
+    \item Dataset yang digunakan adalah \textit{Self-Annotated Reddit Corpus} (SARC), dengan sekitar 200.000 pasangan \textit{parent comment} dan \textit{target comment} yang digunakan dalam eksperimen.
+    \item Data yang digunakan hanya berupa komentar berbahasa Inggris sesuai dengan karakteristik dataset SARC.
+    \item Model yang digunakan dalam penelitian ini dibatasi pada RoBERTa dan DistilBERT.
+    \item Input model menggunakan \textit{parent comment} dan \textit{target comment} tanpa menggunakan \textit{context summarization}, metadata tambahan, maupun fitur khusus berbasis emoji.
+    \item Penelitian berfokus pada analisis \textit{trade-off} antara performa klasifikasi dan efisiensi komputasi, tanpa melakukan implementasi langsung pada lingkungan produksi.
+    \item Performa klasifikasi diukur menggunakan accuracy, precision, recall, dan F1-score. Sementara itu, efisiensi komputasi diukur berdasarkan \textit{training time}, \textit{inference latency}, penggunaan memori GPU, dan jumlah parameter model.
+    \item Penelitian ini tidak membahas interpretabilitas model maupun pendekatan \textit{Explainable Artificial Intelligence} (XAI).
+    \item Proses \textit{fine-tuning} dilakukan dengan pengujian hyperparameter secara terbatas dan tidak mencakup \textit{hyperparameter optimization} secara ekstensif.
+\end{enumerate}
+
+
+\section{Manfaat Penelitian}
+
+Penelitian ini diharapkan dapat memberikan kontribusi secara teoretis dan praktis pada pengembangan sistem deteksi sarkasme berbasis transformer dalam bidang \textit{Natural Language Processing} (NLP). Selain itu, penelitian ini juga diharapkan dapat menawarkan pemahaman yang lebih menyeluruh mengenai analisis \textit{trade-off} antara akurasi klasifikasi dan efisiensi komputasi dalam penerapan model transformer pada konteks media sosial.
+
+\subsection{Manfaat Teoritis}
+
+\begin{enumerate}
+    \item Hasil dari penelitian ini diharapkan dapat berkontribusi pada pengembangan penelitian ilmiah terkait deteksi sarkasme berbasis transformer, khususnya dalam hal analisis \textit{trade-off} antara kinerja klasifikasi dan efisiensi komputasi. 
+    \item Penelitian ini diharapkan dapat memberikan wawasan akademis yang lebih mendalam mengenai karakteristik arsitektur transformer berukuran besar (\textit{heavyweight}) dan berbobot ringan (\textit{lightweight}), yaitu RoBERTa dan DistilBERT, dalam tugas deteksi sarkasme kontekstual.
+    \item Hasil dari penelitian ini diharapkan sebagai tolak ukur bagi penelitian selanjutnya di bidang \textit{Natural Language Processing} yang efisien secara komputasi dan pemahaman bahasa kontekstual pada platform media sosial.
+\end{enumerate}
+
+
+\subsection{Manfaat Praktis}
+
+\begin{enumerate}
+    \item Penelitian ini diharapkan dapat memberikan wawasan praktis mengenai implementasi model berbasis transformer untuk deteksi sarkasme pada lingkungan media sosial seperti Reddit.
+    \item Hasil dari penelitian ini diharapkan dapat membantu peneliti dan pengembang sistem memahami \textit{trade-off} antara kinerja klasifikasi dan efisiensi komputasi dalam pemilihan model transformer untuk aplikasi NLP di dunia nyata.
+    \item Studi ini diharapkan dapat berkontribusi pada pengembangan sistem deteksi sarkasme yang efisien secara komputasi untuk lingkungan analisis media sosial skala besar dan kebutuhan real-time.
+\end{enumerate}
+
+
+\section{Hipotesis}
+
+Tinjauan literatur dan metodologi yang diusulkan untuk penelitian ini mengarah pada perumusan beberapa hipotesis yang akan diuji selama proses eksperimen studi ini. Hipotesis-hipotesis ini dirumuskan berdasarkan karakteristik arsitektur transformer, kemampuan representasi kontekstual model, dan pertimbangan efisiensi komputasi dalam tugas deteksi sarkasme. Hipotesis penelitian ini ditetapkan sebagai berikut:
+
+\begin{enumerate}
+    \item Model RoBERTa diperkirakan mencapai kinerja klasifikasi yang lebih tinggi dalam tugas deteksi sarkasme berkat kapabilitas representasi kontekstual yang lebih kuat dan arsitektur transformer yang lebih dalam.
+    \item Model DistilBERT diperkirakan memberikan efisiensi komputasi yang lebih baik, seperti waktu inferensi yang lebih cepat dan penggunaan memori GPU yang lebih rendah, karena model ini memanfaatkan arsitektur transformer berbobot ringan berdasarkan \textit{knowledge distillation}.
+    \item Meskipun DistilBERT memiliki arsitektur model yang lebih kecil, model ini diperkirakan dapat mempertahankan kinerja klasifikasi yang kompetitif dibandingkan dengan RoBERTa pada dataset \textit{Self-Annotated Reddit Corpus}  (SARC).
+    \item Terdapat \textit{trade-off} antara kinerja klasifikasi dan efisiensi komputasi dalam penggunaan RoBERTa dan DistilBERT untuk deteksi sarkasme berbasis transformer.
+\end{enumerate}
+
+
+\section{Rencana Kegiatan}
+
+Rencana kegiatan dalam penelitian ini terdiri dari beberapa tahapan sistematis yang dilakukan untuk mendukung implementasi dan evaluasi model deteksi sarkasme berbasis transformer. Tahap pertama mencakup tinjauan pustaka mengenai deteksi sarkasme, arsitektur transformer, efisiensi komputasi, dan pemahaman bahasa dalam bidang \textit{Natural Language Processing (NLP)}. Setelah itu, dilakukan proses pengumpulan dan persiapan dataset \textit{Self-Annotated Reddit Corpus}  (SARC) sebagai sumber data utama dalam penelitian. Dataset yang telah dikumpulkan kemudian melalui tahap preprocessing data, seperti pembersihan teks, tokenisasi, dan persiapan struktur percakapan kontekstual untuk mendukung tugas deteksi sarkasme.
+
+Langkah selanjutnya mencakup implementasi dan proses fine-tunning model RoBERTa dan DistilBERT untuk klasifikasi sarkasme. Setelah proses implementasi, kedua model akan dievaluasi menggunakan metrik performa klasifikasi dan pengukuran efisiensi komputasi. Selanjutnya, analisis terhadap hasil eksperimen akan dilakukan untuk mengkaji \textit{trade-off} antara kinerja klasifikasi dan efisiensi komputasi dari setiap model transformer. Temuan penelitian dan analisis eksperimental secara keseluruhan akan dimuat dalam laporan penelitian akhir.
+
+
+\section{Jadwal Kegiatan}
+
+Jadwal pelaksanaan penelitian disusun berdasarkan tahapan metodologi penelitian yang telah dirancang. Adapun jadwal kegiatan penelitian yang akan dilakukan ditunjukkan pada Tabel 1.1.
+
+\begin{table}[h!]
+\centering
+\caption{Jadwal kegiatan proposal tugas akhir}
+\label{tab:jadwal_kegiatan}
+
+\begin{tabular}{|c|m{3.5cm}|*{24}{c|}}
+\hline
+
+\multirow{2}{*}{\textbf{No}} &
+\multirow{2}{*}{\textbf{Kegiatan}} &
+\multicolumn{24}{c|}{\textbf{Bulan ke-}} \\
+
+\cline{3-26}
+
+& &
+\multicolumn{4}{c|}{\textbf{1}} &
+\multicolumn{4}{c|}{\textbf{2}} &
+\multicolumn{4}{c|}{\textbf{3}} &
+\multicolumn{4}{c|}{\textbf{4}} &
+\multicolumn{4}{c|}{\textbf{5}} &
+\multicolumn{4}{c|}{\textbf{6}} \\
+
+\hline
+
+1 &
+Studi Literatur &
+\cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} &
+\cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} &
+{} & {} & {} & {} &
+{} & {} & {} & {} &
+{} & {} & {} & {} &
+{} & {} & {} & {} \\
+\hline
+
+2 &
+Pengumpulan Dataset &
+\cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} &
+\cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} &
+{} & {} & {} & {} &
+{} & {} & {} & {} &
+{} & {} & {} & {} &
+{} & {} & {} & {} \\
+\hline
+
+3 &
+Analisis dan Perancangan Sistem &
+{} & {} & {} & {} &
+\cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} &
+\cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} &
+{} & {} & {} & {} &
+{} & {} & {} & {} &
+{} & {} & {} & {} \\
+\hline
+
+4 &
+Implementasi dan \textit{Fine-Tuning} Model &
+{} & {} & {} & {} &
+{} & {} & {} & {} &
+\cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} &
+\cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} &
+{} & {} & {} & {} &
+{} & {} & {} & {} \\
+\hline
+
+5 &
+Evaluasi dan Analisis Hasil &
+{} & {} & {} & {} &
+{} & {} & {} & {} &
+{} & {} & {} & {} &
+\cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} &
+\cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} &
+{} & {} & {} & {} \\
+\hline
+
+6 &
+Penyusunan Laporan &
+{} & {} & {} & {} &
+\cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} &
+\cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} &
+\cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} &
+\cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} &
+\cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} \\
+\hline
+
+\end{tabular}
+
+\end{table}
+
+\newpage

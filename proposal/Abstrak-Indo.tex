@@ -1,0 +1,13 @@
+\chapter*{Abstrak}
+
+Deteksi sarkasme masih menjadi salah satu tantangan dalam bidang \textit{Natural Language Processing} (NLP) karena makna sarkastis sering kali tidak disampaikan secara langsung dan sangat bergantung pada konteks percakapan. Pada media sosial seperti Reddit, penggunaan bahasa yang informal, singkatan, serta hubungan antar komentar membuat sarkasme semakin sulit dikenali hanya dari makna literal suatu teks. Kondisi tersebut membuat penggunaan model yang mampu memahami konteks menjadi penting, tetapi kebutuhan sumber daya komputasi dari model juga perlu diperhatikan.
+
+Penelitian ini membahas \textit{trade-off} antara performa klasifikasi dan efisiensi komputasi pada dua model transformer, yaitu RoBERTa dan DistilBERT, untuk tugas deteksi sarkasme. Dataset yang digunakan adalah \textit{Self-Annotated Reddit Corpus} (SARC), dengan struktur input berupa pasangan \textit{parent comment} dan \textit{target comment}. Kedua model diuji dalam kondisi eksperimen yang terkontrol tanpa menggunakan \textit{context summarization} maupun metadata tambahan, sehingga perbandingan dapat lebih difokuskan pada karakteristik dari masing-masing model.
+
+Performa klasifikasi dievaluasi menggunakan \textit{accuracy}, \textit{precision}, \textit{recall}, dan \textit{F1-score}. Sementara itu, efisiensi komputasi diukur berdasarkan \textit{training time}, \textit{inference latency}, penggunaan memori GPU, dan jumlah parameter model. Analisis dilakukan untuk melihat seberapa besar perubahan performa yang diperoleh dibandingkan dengan kebutuhan komputasi dari masing-masing model. Penelitian ini tidak bertujuan untuk menentukan satu model yang paling baik secara mutlak, tetapi untuk melihat kondisi penggunaan yang lebih sesuai bagi RoBERTa maupun DistilBERT berdasarkan kebutuhan performa dan keterbatasan sumber daya komputasi.
+
+\vspace{0.5 cm}
+
+\begin{flushleft}
+{\textbf{Kata Kunci:} deteksi sarkasme, transformer, \textit{RoBERTa}, \textit{DistilBERT}, \textit{trade-off}, efisiensi komputasi.}
+\end{flushleft}

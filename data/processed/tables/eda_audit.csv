@@ -1,0 +1,10 @@
+Pemeriksaan,Jumlah baris,% data
+Comment kosong (NaN),55,0.005
+"Pasangan (comment, parent) duplikat",809,0.08
+Pasangan dengan label bertentangan,7,0.001
+Comment berisi URL,125,0.012
+Comment berisi HTML entity/tag,2859,0.283
+Parent berisi HTML entity/tag,7208,0.713
+Comment berisi mention,401,0.04
+Comment berisi emoji,0,0.0
+ups = -1 (nilai sentinel),168041,16.624
