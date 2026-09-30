@@ -36,9 +36,8 @@ Thumbs.db
 *.swp
 *.swo
 
-# Data files (optional - uncomment if you don't want to push large data files)
-# data/raw/
-# data/processed/
+# Data files - raw data excluded (too large for GitHub)
+data/raw/
 # *.csv
 # *.xlsx
 
